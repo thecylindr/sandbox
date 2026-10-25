@@ -1,0 +1,45 @@
+# Структура: данные запуска -> результат сборки -> Python -> секреты -> редакторы и система
+
+# Данные запуска, не код: $HOME агентов (входы и токены), копии проектов, журналы, состояние и резервные копии
+/home/
+/workspaces/
+/logs/
+/state/
+/windows-data/
+
+# Результат сборки Windows-архива (python3 windows/package.py)
+/dist/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Секреты на случай копирования в каталог проекта: имена из SECRET_FILES (sandbox.py); id_* заменён именами ключей SSH
+.env*
+*.pem
+*.key
+id_rsa*
+id_dsa*
+id_ecdsa*
+id_ed25519*
+.npmrc
+.pypirc
+.netrc
+.git-credentials
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.kdbx
+credentials.json
+service-account*.json
+terraform.tfstate*
+
+# Редакторы и система
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+desktop.ini

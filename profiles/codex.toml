@@ -1,0 +1,9 @@
+description = "OpenAI Codex: рабочая папка, свой $HOME, сеть только к OpenAI"
+command = ["codex"]
+network = "allowlist"
+domains = ["api.openai.com", "auth.openai.com", "chatgpt.com", "*.chatgpt.com", "*.openai.com"]
+# места установки codex/node (несуществующие пропускаются)
+ro = ["~/.nvm", "~/.volta", "~/.npm-global", "~/.local/bin", "~/.local/lib", "~/.cargo/bin"]
+env_pass = ["OPENAI_API_KEY"]
+
+neutral = true               # нейтральная среда: проект виден как /workspace, HOME /home/user, /proc без сведений об оборудовании

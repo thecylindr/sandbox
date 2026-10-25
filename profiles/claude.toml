@@ -1,0 +1,8 @@
+description = "Claude Code: рабочая папка, свой $HOME, сеть только к Anthropic"
+command = ["claude"]
+network = "allowlist"
+domains = ["*.anthropic.com", "claude.ai", "*.claude.ai", "claude.com", "*.claude.com"]
+ro = ["~/.nvm", "~/.volta", "~/.npm-global", "~/.local/bin", "~/.local/lib", "~/.local/share/claude", "/opt/claude-code"]
+env_pass = ["ANTHROPIC_API_KEY"]
+
+neutral = true               # нейтральная среда: проект виден как /workspace, HOME /home/user, /proc без сведений об оборудовании

@@ -1,0 +1,5 @@
+description = "Минимум: только рабочая папка, сети нет"
+command = ["bash"]
+network = "off"
+
+neutral = true               # нейтральная среда: проект виден как /workspace, HOME /home/user, /proc без сведений об оборудовании

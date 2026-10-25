@@ -1,0 +1,12 @@
+# Explicit allowlist: projects, credentials, logs and state never enter the build context.
+**
+!docker/
+!docker/Dockerfile
+!docker/entry.py
+!docker/proxy.py
+!docker/selftest.py
+!sandbox.py
+!inner.py
+!seccomp.py
+!transport.py
+!AGENT_POLICY.md
