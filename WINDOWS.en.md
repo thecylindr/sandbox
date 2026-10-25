@@ -19,8 +19,10 @@ host OS. Backend details and a comparison of remaining exposure are in the
 
 ## Start the interface
 
-Unpack the Windows ZIP and launch `start.cmd` for the terminal desktop. It offers
-project selection, access level, self-tests and seasonal visuals. Use
+Unpack the Windows ZIP, install widget dependencies from `requirements-tui.txt`
+into `.venv` (commands are in [TUI.en.md](TUI.en.md)), then launch `start.cmd` for
+the Textual/Rich terminal desktop with its control panel, check table, action log,
+and animated seasonal card. Use
 `start.cmd gui` for the older graphical form. You can also run:
 
 ```powershell

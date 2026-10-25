@@ -69,7 +69,7 @@ Copy an adapter GUID from the `interfaces` output. After `--`, provide the path 
 
 | Command | What it does |
 |---|---|
-| `sandbox` / `sandbox tui` | Opens the terminal desktop. `--season spring` selects a theme; `--preview windows` displays a UI mock without starting an agent. |
+| `sandbox` / `sandbox tui` | Opens the terminal desktop. The widget UI requires `requirements-tui.txt`; `--season spring` selects a theme and `--preview windows` opens a demo with actions disabled. |
 | `sandbox new NAME [--copy PATH]` | Creates a workspace and optionally copies a project into it. Common secret files such as `.env`, keys and credentials are skipped. It will not overwrite an existing workspace. |
 | `sandbox ws` | Lists project copies. `--json` prints only their names as JSON. |
 | `sandbox list` | Lists available launch profiles. |

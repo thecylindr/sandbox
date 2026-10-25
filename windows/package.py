@@ -6,7 +6,7 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 FILES = (
-    "windows.py", "sandbox.py", "inner.py", "seccomp.py", "probe.py", "tomlmini.py", "guard.py", "neutral.py", "transport.py", "ui.py", "tui.py", "skills.py",
+    "windows.py", "sandbox.py", "inner.py", "seccomp.py", "probe.py", "tomlmini.py", "guard.py", "neutral.py", "transport.py", "ui.py", "tui.py", "textual_tui.py", "requirements-tui.txt", "skills.py",
     "install.sh", "install.ps1", "start.cmd",
     ".dockerignore", "AGENT_POLICY.md", "AGENT_POLICY.en.md", "AGENTS.md", "AGENTS.en.md", "README.md", "README.en.md",
     "MANUAL.md", "MANUAL.en.md", "COMMANDS.md", "COMMANDS.en.md", "WINDOWS.md", "WINDOWS.en.md", "WINDOWS_NATIVE.md", "WINDOWS_NATIVE.en.md", "TUI.md", "TUI.en.md",

@@ -17,8 +17,9 @@ with operating-system mechanisms. Edits stay in the copy until you transfer them
 | Windows without WSL2 or Docker; you need a selected network adapter and per-project file permissions | Native `user` account; host process and adapter lists remain visible |
 | You will run deliberately hostile code or need a stronger boundary | A separate virtual machine |
 
-The TUI has a project picker, a seasonal startup screen, local bundle checks, and
-actions for the existing self-tests. **A successful startup screen is not a security
+The optional Textual/Rich widget TUI has a project picker, an animated seasonal card, local
+bundle checks, and actions for the existing self-tests. Install its dependencies from
+`requirements-tui.txt` as described in [TUI.en.md](TUI.en.md). **A successful startup screen is not a security
 test.** The current review status and unverified Windows behavior are in
 [SECURITY_REPORT.en.md](SECURITY_REPORT.en.md).
 
@@ -36,7 +37,7 @@ sandbox run claude demo
 ```
 
 On Windows, install the desired backend with `install.ps1` (details in
-[WINDOWS.en.md](WINDOWS.en.md)), then start `start.cmd` for the TUI or `start.cmd gui`
+[WINDOWS.en.md](WINDOWS.en.md)), then start `start.cmd tui` for the TUI or `start.cmd gui`
 for the graphical window. The `user` backend requires administrator rights for
 setup and launch; the agent itself uses a non-administrator account.
 

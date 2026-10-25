@@ -230,7 +230,7 @@ if [ "$SRC" != "$PREFIX" ]; then
   run mkdir -p "$PREFIX"
   for entry in "$SRC"/* "$SRC"/.[!.]*; do
     [ -e "$entry" ] || continue
-    case "${entry##*/}" in home|workspaces|windows-data|state|logs|dist|profiles|__pycache__|.git) continue ;; esac
+    case "${entry##*/}" in home|workspaces|windows-data|state|logs|dist|profiles|venv|.venv|__pycache__|.git) continue ;; esac
     run cp -R "$entry" "$PREFIX/"       # код и документация обновляются; данные пользователя не затрагиваются
   done
   say "код и документация скопированы в $PREFIX"

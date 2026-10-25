@@ -23,16 +23,38 @@ class DesktopTests(unittest.TestCase):
                 self.assertEqual(tui.main(platform, ROOT, preview=platform, season="summer"), 0)
             screen = output.getvalue()
             self.assertIn("SAND", screen)
-            self.assertIn("ДЕМО ЭКРАНА", screen)
+            self.assertIn("ДЕМО:", screen)
+            self.assertIn("PIXEL SEASON", screen)
             self.assertIn("РАБОЧИЙ СТОЛ", screen)
-            self.assertIn("Windows" if platform == "windows" else "Linux", screen)
+            self.assertIn("WINDOWS" if platform == "windows" else "LINUX", screen)
 
     def test_narrow_seasonal_screen_fits_and_offers_all_actions(self):
         for season in tui.SEASONS:
             screen = tui.render("linux", "bubblewrap", season, "demo", "codex", "edit", tui.preview_checks(), width=60)
             self.assertTrue(all(len(line) == 60 for line in screen.splitlines()))
-            self.assertIn("8 Тесты проекта", screen)
-            self.assertIn("0 Выход", screen)
+            self.assertIn("[8] Тесты проекта", screen)
+            self.assertIn("[0] Выход", screen)
+
+    def test_season_art_and_numbered_button_labels_are_rendered(self):
+        screens = [tui.render("linux", "bubblewrap", season, "demo", "claude", "read",
+                              tui.preview_checks(), width=100) for season in tui.SEASONS]
+        self.assertEqual(len({tuple(screen.splitlines()[1:]) for screen in screens}), len(tui.SEASONS))
+        for screen in screens:
+            self.assertIn("[1] Открыть проект", screen)
+            self.assertIn("[6] Запустить агента", screen)
+            self.assertIn("[7] Сезон", screen)
+
+    def test_fullscreen_game_scene_fills_viewport_and_animates_without_color(self):
+        render = lambda frame: tui.render_fullscreen("linux", "bubblewrap", "summer", "demo", "claude", "read",
+                                                     tui.preview_checks(), width=80, height=24, frame=frame, color=False)
+        first, second = render(0), render(1)
+        self.assertEqual(len(first.splitlines()), 23)
+        self.assertTrue(all(len(line) == 80 for line in first.splitlines()))
+        self.assertNotEqual(first, second)
+        self.assertIn("[6]  Запустить агента", first)
+        colored = tui.render_fullscreen("linux", "bubblewrap", "winter", "demo", "claude", "read",
+                                        tui.preview_checks(), width=80, height=24, color=True)
+        self.assertIn("\x1b[38;2;", colored)
 
     def test_commands_are_argv_and_project_tests_stay_inside_backend(self):
         desktop = tui.Desktop("linux", ROOT, "", "summer")
@@ -98,6 +120,13 @@ class SkillTests(unittest.TestCase):
     def test_windows_parser_exposes_tui_and_project_skills(self):
         self.assertEqual(windows.parser().parse_args(["tui", "--backend", "user"]).action, "tui")
         self.assertEqual(windows.parser().parse_args(["skills", "demo", "--backend", "docker"]).workspace, "demo")
+
+    def test_widget_ui_and_optional_dependencies_are_packaged(self):
+        self.assertIn("textual_tui.py", tui.CORE)
+        self.assertTrue((ROOT / "textual_tui.py").is_file())
+        requirements = (ROOT / "requirements-tui.txt").read_text("utf-8")
+        for package in ("textual>=8.0", "rich>=13", "loguru>=0.7", "openpyxl>=3.1"):
+            self.assertIn(package, requirements)
 
 
 if __name__ == "__main__":

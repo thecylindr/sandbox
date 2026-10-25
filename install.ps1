@@ -128,7 +128,7 @@ if ($script:Problems -gt 0) { throw "Fix the problems above and run the installe
 # ---------- files ----------
 Step 'Files'
 # Only program files; workspaces, state, logs, tokens and build output are never packaged.
-$skip = @('home', 'workspaces', 'state', 'logs', 'dist', 'profiles', 'windows-data', '__pycache__', '.git')
+$skip = @('home', 'workspaces', 'state', 'logs', 'dist', 'profiles', 'windows-data', 'venv', '.venv', '__pycache__', '.git')
 if ([IO.Path]::GetFullPath($PSScriptRoot).TrimEnd('\') -ne [IO.Path]::GetFullPath($app).TrimEnd('\')) {
     Do-Action "create $app" { New-Item -ItemType Directory -Force $app | Out-Null }
     foreach ($item in Get-ChildItem -LiteralPath $PSScriptRoot -Force) {

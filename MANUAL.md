@@ -109,7 +109,8 @@ HOME агентов, журналы и состояние.
 | `sandbox.py`, `inner.py`, `seccomp.py`, `probe.py` | запуск и сборка bwrap; первый процесс внутри; фильтр syscalls; атаки для `selftest` |
 | `transport.py` | ограниченный по памяти и потокам мост TCP/Unix, тайм-ауты и проверка готовности прокси |
 | `neutral.py`, `guard.py`, `tomlmini.py` | нейтральная среда; защита исполняемых на хосте файлов; разбор TOML для Python < 3.11 |
-| `ui.py`, `tui.py`, `skills.py`, `agent-skills/` | оформление вывода и сезонный TUI; подготовка текстовых навыков в копии проекта для Claude/Codex |
+| `ui.py`, `tui.py`, `textual_tui.py`, `requirements-tui.txt` | оформление CLI и виджетный сезонный TUI на Textual/Rich (необязательные зависимости) |
+| `skills.py`, `agent-skills/` | подготовка текстовых навыков в копии проекта для Claude/Codex |
 | `profiles/*.toml` | профили; `workspaces/` — проекты агентов; `home/` — их постоянные `$HOME` |
 | `state/`, `logs/` | подтверждения запуска, временные файлы; журнал прокси и запусков (`sandbox log`) |
 | `AGENT_POLICY.md`, `AGENTS.md`, `tests/` | правила агента (раздел 11); правила работы над кодом; регрессионные тесты |
@@ -124,7 +125,7 @@ HOME агентов, журналы и состояние.
 Он не скрывает интерфейсы/процессы хоста; см. [WINDOWS_NATIVE.md](WINDOWS_NATIVE.md).
 
 Подробно — [WINDOWS.md](WINDOWS.md): `install.ps1 -Check` покажет, что доступно (WSL2, Docker), и установит нужный
-режим. Без WSL2/Docker можно явно выбрать `-Backend user`: это более слабая ACL/WFP-граница, описанная отдельно в WINDOWS_NATIVE.md.
+режим. Виджетный TUI требует отдельной установки зависимостей из `requirements-tui.txt`; без них остаётся компактный встроенный режим. Без WSL2/Docker можно явно выбрать `-Backend user`: это более слабая ACL/WFP-граница, описанная отдельно в WINDOWS_NATIVE.md.
 
 ## 4. Быстрый старт и команды
 

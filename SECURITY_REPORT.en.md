@@ -36,7 +36,7 @@ The real `check`/`selftest` actions remain separate and use controlled fixtures.
 
 ## Verification completed here
 
-`python3 -m unittest discover -s tests -v` ran **183 tests: 180 passed,
+At the 2026-10-25 audit, `python3 -m unittest discover -s tests -v` ran **183 tests: 180 passed,
 3 skipped, 0 failures**. The log is `state/tui-validation-2026-10-25.txt`.
 The three live Linux tests were stopped before fixture execution because the
 environment rejected bubblewrap namespace setup:
@@ -49,6 +49,13 @@ There was no fallback to scanning host networks or processes. Python compilation
 and shell syntax checks passed. Linux and Windows terminal screen previews ran
 locally; the Windows picture was an emulation, not a Windows process run.
 No Docker, WSL2 or native Win32 runtime acceptance was possible here.
+
+TUI update after that audit: a separate Textual/Rich widget screen, local module
+status table, action log, and XLSX export were added. `tests.test_tui` passes all 11
+tests and `py_compile` succeeds. Textual dependencies are not installed in this
+environment; the PyPI request failed on DNS, so the widget screen could not be run
+here. This UI change does not alter isolation boundaries; Windows/WSL/Docker still
+need validation on their target systems.
 
 ## Target-machine acceptance
 

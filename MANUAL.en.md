@@ -41,7 +41,7 @@ but preserves managed workspaces, homes, logs and edited profiles.
 
 ```bash
 ./install.sh
-sandbox                              # lightweight terminal desktop
+sandbox                              # Textual desktop (optional requirements-tui.txt)
 sandbox new demo --copy ~/code/demo  # copied project; source untouched
 sandbox skills demo                  # two local skills for Codex and Claude
 sandbox run codex demo --access read
@@ -55,6 +55,9 @@ project files that the host may execute, such as Git hooks and IDE tasks.
 `sandbox check` checks setup, and `sandbox selftest [profile]` runs controlled
 attacks from inside the sandbox. The TUI exposes these actions; see
 [TUI.en.md](TUI.en.md).
+
+The widget desktop uses Python 3.10+ and the optional `requirements-tui.txt` packages.
+Without them the built-in compact terminal screen remains available.
 
 The import omits common `.env`, key and credential filenames and removes URL
 credentials from the copy's `.git/config`. This is only a filename-oriented
